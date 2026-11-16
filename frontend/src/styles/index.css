@@ -1,0 +1,30 @@
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-500.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { @apply bg-paper font-sans text-base text-ink; font-feature-settings: "ss02" 1; }
+  :focus-visible { outline: 2px solid #526B58; outline-offset: 2px; border-radius: 3px; }
+  ::selection { background: #DCE5DC; }
+  table { font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .num { font-variant-numeric: tabular-nums; }
+  .panel { @apply relative rounded-md border border-stone-line bg-surface; }
+  .field { @apply h-9 w-full rounded border border-stone-dark bg-surface px-3 text-base text-ink placeholder:text-ink-faint
+    hover:border-ink-faint focus:border-forest focus:outline-none focus:ring-2 focus:ring-sage disabled:bg-stone/40; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink-soft; }
+  .hint { @apply mt-1 text-xs text-ink-muted; }
+  .link { @apply text-forest-deep underline decoration-forest/30 underline-offset-2 hover:decoration-forest; }
+  .route-enter { animation: route-enter 160ms ease-out; }
+  @keyframes route-enter { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+}
